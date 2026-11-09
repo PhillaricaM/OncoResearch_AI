@@ -118,6 +118,22 @@ if st.toggle("Show Tableau dashboard here", key="show_tableau"):
     st.caption("If the dashboard stays blank or Tableau asks you to sign in, use the link above to open it directly.")
 
 st.divider()
+st.subheader("PharmaLab · Cancer gene expression")
+st.caption("Published Tableau dashboard with its own gene-expression dataset. Compound searches and OncoCompute calculations do not update or filter this dashboard.")
+gene_expression_view = (
+    "https://public.tableau.com/views/"
+    "PharmaLab_Cancer_Gene_Expression/PharmaLabCancerGeneExpressionDashboard"
+)
+st.link_button("Open gene expression in Tableau Public", gene_expression_view + "?:showVizHome=no")
+if st.toggle("Show gene-expression dashboard here", key="show_gene_expression_tableau"):
+    st.iframe(
+        gene_expression_view + "?:showVizHome=no&:embed=yes&:tabs=no&:toolbar=yes",
+        height=850,
+        alt="Published PharmaLab cancer gene expression dashboard",
+    )
+    st.caption("If the dashboard stays blank or Tableau asks you to sign in, use the link above to open it directly.")
+
+st.divider()
 st.subheader("PharmaLab · Compound analysis")
 st.caption("Published Tableau dashboard with its own compound dataset. ChEMBL searches above do not update or filter this dashboard.")
 pharmalab_view = (

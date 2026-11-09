@@ -2,9 +2,29 @@
 
 **A browser-based scientific research application connecting compound discovery, C++ calculations, and research visualization.**
 
-OncoResearch AI brings together work from **PharmaLab Analyzer** and **OncoCompute** in one research interface. It currently supports live ChEMBL compound searches, a real OncoCompute C++ arithmetic-mean calculation, downloadable research records, and two published Tableau dashboards.
+OncoResearch AI brings together work from **PharmaLab Analyzer** and **OncoCompute** in one research interface. It currently supports live ChEMBL compound searches, a real OncoCompute C++ arithmetic-mean calculation, downloadable research records, and three published Tableau dashboards.
 
 The long-term goal is an AI-assisted workspace where natural-language questions guide tested scientific tools and produce traceable results. **AI chat and natural-language tool selection are planned and are not implemented in the current release.**
+
+## Screenshots
+
+### ChEMBL compound explorer
+
+![OncoResearch AI displaying aspirin search results with ChEMBL identifiers and molecular descriptors](assets/screenshots/compound-search.png)
+
+Live compound search with molecular descriptors and downloadable CSV results. Candidate matches require confirmation of molecular identity.
+
+### OncoCompute C++ calculation
+
+![OncoCompute calculating an arithmetic mean of 18.8 micromolar from five synthetic replicate measurements](assets/screenshots/oncocompute-mean.png)
+
+The connected C++ function calculates a mean of **18.8 µM** from five **synthetic replicate measurements**. These demonstration values are not experimental results or an IC50 estimate.
+
+### Embedded research dashboard
+
+![Embedded OncoCompute Tableau dashboard showing reported NCI-60 log-scale measurements for five breast cancer cell lines and compound NSC 713750](assets/screenshots/oncocompute-tableau.png)
+
+The published OncoCompute Tableau dashboard displayed within the application. Its dataset is independent of current compound searches and calculations.
 
 ## How the projects fit together
 
@@ -36,12 +56,13 @@ Calculation records retain the inputs, declared units, source revision, compiler
 
 ### Integrated Tableau dashboards
 
-Two published dashboards can be explored within the application or opened directly:
+Three published dashboards can be explored within the application or opened directly:
 
 - [OncoCompute — NCI-60 Cancer Drug Response Analysis](https://public.tableau.com/views/OncoComputeNCI-60CancerDrugResponseAnalysis/OncoComputeNCI-60CancerDrugResponseAnalysis?:showVizHome=no)
 - [PharmaLab Scientific Analyzer — Compound Analysis](https://public.tableau.com/views/PharmaLabScientificAnalyzer_CompoundAnalysis/Dashboard1?:showVizHome=no)
+- [PharmaLab — Cancer Gene Expression](https://public.tableau.com/views/PharmaLab_Cancer_Gene_Expression/PharmaLabCancerGeneExpressionDashboard?:showVizHome=no)
 
-Each dashboard retains its own published dataset. Compound searches and calculations do not automatically filter or refresh either dashboard.
+Each dashboard retains its own published dataset. Compound searches and calculations do not automatically filter or refresh these dashboards. The gene-expression view displays the published analysis; the application does not run a gene-expression analysis pipeline.
 
 ### Scientific provenance and testability
 

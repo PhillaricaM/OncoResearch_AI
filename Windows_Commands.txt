@@ -1,0 +1,89 @@
+ONCORESEARCH AI — WINDOWS POWERSHELL COMMANDS
+
+Run commands in VS Code: Terminal > New Terminal (PowerShell).
+Copy only the command lines, not the explanations.
+These commands use your existing local project and Python environment.
+Keep this file as a local reference; other computers need their own project path.
+
+1. START THE BACKEND — FIRST TERMINAL
+
+Set-Location "C:\Users\phill\OneDrive\Documents\ChatGPT\Programming Projects\OncoResearch_AI"
+.\.venv\Scripts\python.exe -m uvicorn backend.main:app --reload --host 127.0.0.1 --port 8000
+
+Leave this terminal running. Wait for "Application startup complete."
+
+2. START THE FRONTEND — SECOND TERMINAL
+
+Open Terminal > New Terminal again, then run:
+
+Set-Location "C:\Users\phill\OneDrive\Documents\ChatGPT\Programming Projects\OncoResearch_AI"
+.\.venv\Scripts\python.exe -m streamlit run frontend/app.py --server.address 127.0.0.1 --server.port 8501
+
+Leave this terminal running too. Streamlit may open the browser automatically.
+
+3. OPEN THE APP — THIRD TERMINAL OR ANOTHER POWERSHELL WINDOW
+
+Start-Process "http://127.0.0.1:8501"
+
+This opens your default browser. It does not start the servers.
+Both servers above must be running to use the full application.
+The localhost address works only on this computer.
+
+4. OPEN THE BACKEND API DOCUMENTATION
+
+Start-Process "http://127.0.0.1:8000/docs"
+
+5. CHECK THE BACKEND STATUS
+
+Invoke-RestMethod "http://127.0.0.1:8000/health"
+
+6. BUILD OR REBUILD THE ONCOCOMPUTE C++ ADAPTER
+
+Stop the backend with Ctrl+C before rebuilding. The compiler directory below
+matches this computer's MSYS2 installation. Change it on other computers.
+
+Set-Location "C:\Users\phill\OneDrive\Documents\ChatGPT\Programming Projects\OncoResearch_AI"
+$env:Path = "C:\msys64\ucrt64\bin;" + $env:Path
+.\.venv\Scripts\python.exe scripts/build_oncocompute.py
+
+Restart the backend after a successful build.
+
+7. RUN THE TESTS
+
+Set-Location "C:\Users\phill\OneDrive\Documents\ChatGPT\Programming Projects\OncoResearch_AI"
+.\.venv\Scripts\python.exe -m pytest -q
+
+The native tests require g++ on PATH. Use the PATH command in section 6 if needed.
+
+8. OPEN THE GITHUB REPOSITORY
+
+Start-Process "https://github.com/PhillaricaM/OncoResearch_AI"
+
+9. CHECK LOCAL GIT CHANGES
+
+Set-Location "C:\Users\phill\OneDrive\Documents\ChatGPT\Programming Projects\OncoResearch_AI"
+git status
+
+Review changes in VS Code Source Control before committing or syncing.
+
+10. STOP THE APPLICATION
+
+Click inside the frontend terminal and press Ctrl+C.
+Click inside the backend terminal and press Ctrl+C.
+Closing the browser alone does not stop the servers.
+
+SCREENSHOT CHECKLIST
+
+- Search for aspirin and capture the compound results table.
+- Calculate the mean of 1, 2, 3 and capture the result of 2.
+- Enable a Tableau dashboard and wait for it to finish loading before capturing.
+- Crop unrelated tabs and personal information from screenshots.
+
+TROUBLESHOOTING
+
+- If a port is already in use, check whether your previous server is still running.
+  Reuse that server or stop it with Ctrl+C before starting another copy.
+- If the browser cannot connect, check the frontend terminal for startup errors.
+- If searches or calculations fail, check the backend terminal and /health.
+- If OncoCompute reports it needs a build, follow section 6.
+- If the .venv Python file is missing, follow the setup guidance in the project docs.
