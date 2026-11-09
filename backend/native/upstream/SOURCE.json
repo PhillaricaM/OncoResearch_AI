@@ -1,0 +1,6 @@
+{
+  "repository": "https://github.com/PhillaricaM/OncoCompute",
+  "revision": "1c4cb3777f30cc369a955d97eb7e9fd6babb651a",
+  "files": ["src/statistics.cpp", "include/oncocompute/statistics.hpp"],
+  "note": "Reviewed snapshot of the existing mean implementation. Do not change these files without updating the revision and reviewing upstream changes."
+}

@@ -4,3 +4,5 @@ __pycache__/
 *.pyc
 .env
 .tmp/
+**/.streamlit/secrets.toml
+backend/native/bin/
